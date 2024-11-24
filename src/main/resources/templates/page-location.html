@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location Details</title>
+    <link rel="stylesheet" th:href="@{/location-style.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Локация</h1>
+
+    <!-- Поля объекта location -->
+    <div class="field">
+        <label for="id">ID:</label>
+        <div class="value" id="id" th:text="${location.id}">12345</div>
+
+    </div>
+    <div class="field">
+        <label for="name">Название:</label>
+        <div class="value" id="name" th:text="${location.name}">Earth</div>
+    </div>
+    <div class="field">
+        <label for="type">Тип:</label>
+        <div class="value" id="type" th:text="${location.type}">Planet</div>
+    </div>
+    <div class="field">
+        <label for="dimension">Измерение:</label>
+        <div class="value" id="dimension" th:text="${location.dimension}">C-137</div>
+    </div>
+    <div class="field">
+        <label for="created">Создана:</label>
+        <div class="value" id="created" th:text="${location.created}">2021-04-19</div>
+    </div>
+
+    <!-- Кнопка перехода на предыдущую страницу -->
+    <button class="back-button" onclick="window.history.back()">← Назад</button>
+</div>
+</body>
+</html>

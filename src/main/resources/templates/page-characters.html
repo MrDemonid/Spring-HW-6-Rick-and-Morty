@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/main.css}">
+    <title>Персонажи</title>
+</head>
+
+<body>
+<header class="header">
+    <div class="header-content">
+        <h1>Rick & Morty</h1>
+        <a th:href="@{/characters/filter}" class="filter-link">Фильтр</a>
+    </div>
+</header>
+
+<div class="container">
+    <div class="card" th:each="character : ${characters.getResults()}">
+
+        <a th:href="@{/characters/details/{id}(id=${character.id})}">
+            <img th:src="${character.image}" alt="Character Image">
+            <div class="info">
+                <div th:text="${character.name}">Name</div>
+                <div th:text="${character.status}">Status</div>
+                <div th:text="${character.species}">Race</div>
+                <div th:text="${character.gender}">Gender</div>
+            </div>
+        </a>
+    </div>
+</div>
+<!-- Кнопки для перехода по страницам -->
+<div class="pagination">
+    <!-- Предыдущая страница -->
+    <a th:if="${prevPageUrl != null}" th:href="@{${prevPageUrl}}" class="active" th:classappend="${prevPageUrl == null} ? 'disabled'">&laquo; Previous</a>
+
+    <!-- Текущая страница и соседние страницы -->
+    <a th:each="page : ${pages}"
+       th:classappend="${page.getCurrent() ? 'active' : ''}"
+       th:href="@{${page.url}}"
+       th:text="${page.number}"></a>
+
+    <!-- Следующая страница -->
+    <a th:if="${nextPageUrl != null}" th:href="@{${nextPageUrl}}" class="active" th:classappend="${nextPageUrl == null} ? 'disabled'">Next &raquo;</a>
+</div>
+
+</body>
+</html>

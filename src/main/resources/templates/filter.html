@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Фильтр</title>
+    <link rel="stylesheet" th:href="@{/main.css}">
+</head>
+<body>
+<div class="header">
+    <div class="header-content">
+        <h1>Фильтр</h1>
+    </div>
+</div>
+
+<form th:action="@{/filter/apply}" th:method="post">
+    <div class="container-filter">
+        <!-- Status field -->
+        <div class="card-filter">
+            <label for="status">Status:</label>
+            <select id="status" name="status">
+                <option th:each="status : ${statuses}" th:value="${status}" th:text="${status}"></option>
+            </select>
+        </div>
+
+        <!-- Gender field -->
+        <div class="card-filter">
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender">
+                <option th:each="gender : ${genders}" th:value="${gender}" th:text="${gender}"></option>
+            </select>
+        </div>
+
+        <!-- Species field -->
+        <div class="card-filter">
+            <label for="species">Species:</label>
+            <select id="species" name="species">
+                <option th:each="species : ${speciesList}" th:value="${species}" th:text="${species}"></option>
+            </select>
+        </div>
+
+        <!-- Type field -->
+        <div class="card-filter">
+            <label for="type">Type:</label>
+            <input id="type" name="type" type="text" placeholder="Enter type..." />
+        </div>
+    </div>
+
+    <div class="button-container">
+        <a href="javascript:history.back()">← Назад</a>
+        <button type="submit">Применить</button>
+    </div>
+</form>
+</body>
+</html>

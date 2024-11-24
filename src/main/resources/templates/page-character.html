@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Character Details</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/character-style.css}">
+</head>
+<body>
+
+
+<div class="character-container">
+    <div>
+        <img th:src="${character.image}" alt="Character Image" class="character-image">
+    </div>
+
+    <div class="character-details">
+        <h2 th:text="${character.name}">Имя</h2>
+        <p><span class="label">Id:</span> <span th:text="${character.id}">Id</span></p>
+        <p><span class="label">Статус:</span> <span th:text="${character.status}">Alive/Dead</span></p>
+        <p><span class="label">Раса:</span> <span th:text="${character.species}">Human/Alien</span></p>
+        <p th:if="${character.type}"><span class="label">Подвид:</span> <span th:text="${character.type}">Type Value</span></p>
+        <p><span class="label">Пол:</span> <span th:text="${character.gender}">Male/Female</span></p>
+        <p><span class="label">Создан:</span> <span th:text="${character.created}">Creation Date</span></p>
+
+        <p><span class="label">Место рождения:</span>
+        <form th:action="@{/locations/details}" th:object="${character.getOriginLocation()}" method="post">
+            <input type="hidden" th:name="id" th:value="*{id}" />
+            <input type="hidden" th:name="name" th:value="*{name}" />
+            <input type="hidden" th:name="type" th:value="*{type}" />
+            <input type="hidden" th:name="dimension" th:value="*{dimension}" />
+            <input type="hidden" th:name="created" th:value="*{created}" />
+            <input type="hidden" th:name="residents" th:value="*{residents}" />
+            <input type="hidden" th:name="url" th:value="*{url}" />
+            <button type="submit" th:text="*{name}">Отправить</button>
+        </form>
+        </p>
+
+        <p><span class="label">Местонахождение:</span>
+        <form th:action="@{/locations/details}" th:object="${character.getCurrentLocation()}" method="post">
+            <input type="hidden" th:name="id" th:value="*{id}" />
+            <input type="hidden" th:name="name" th:value="*{name}" />
+            <input type="hidden" th:name="type" th:value="*{type}" />
+            <input type="hidden" th:name="dimension" th:value="*{dimension}" />
+            <input type="hidden" th:name="created" th:value="*{created}" />
+            <input type="hidden" th:name="residents" th:value="*{residents}" />
+            <input type="hidden" th:name="url" th:value="*{url}" />
+            <button type="submit" th:text="*{name}">Отправить</button>
+        </form>
+        </p>
+
+    </div>
+</div>
+
+<!-- Кнопка "Назад" -->
+<div class="back-button">
+    <a href="javascript:history.back()" class="button">← Назад</a>
+</div>
+
+</body>
+</html>

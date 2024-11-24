@@ -1,0 +1,67 @@
+/* Основной контейнер */
+.character-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    height: 80vh; /* Высота контейнера — 80% от высоты окна */
+}
+
+/* Стиль для изображения */
+.character-image {
+    height: 80vh; /* Высота изображения — 80% от высоты контейнера */
+    max-height: 80vh;
+    width: auto; /* Ширина будет подстраиваться пропорционально */
+    margin-right: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Блок для информации о персонаже */
+.character-details {
+    flex-grow: 1;
+    overflow: auto; /* Если текст выходит за границы, будет прокрутка */
+}
+
+/* Стили для текста */
+.character-details h2 {
+    margin-top: 0;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.character-details p {
+    margin: 5px 0;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+/* Стили для разметки */
+.label {
+    font-weight: bold;
+}
+
+/* Стиль кнопки "Назад" */
+.back-button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.back-button .button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-decoration: none;
+    color: white;
+    background-color: #007BFF;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.back-button .button:hover {
+    background-color: #0056b3;
+}

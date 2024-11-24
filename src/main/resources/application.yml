@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: "Spring-HW-6-Rick-and-Morty"
+
+config:
+  ui:
+    window-page-size: 9
+
+url:
+  rickandmortyapi:
+    api:
+      characters: "https://rickandmortyapi.com/api/character"
+      episodes: "https://rickandmortyapi.com/api/episode"
+      locations: "https://rickandmortyapi.com/api/location"
